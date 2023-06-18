@@ -14,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
-    "redux": "^4.1.2"
+    "redux": "^4.1.2",
+    "reset-css": "^5.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
