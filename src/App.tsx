@@ -1,11 +1,16 @@
-import { useRoutes } from 'react-router-dom'
+import React from 'react'
+import { useRoutes, Link } from 'react-router-dom'
 import router from './routers'
 function App() {
   const outlet = useRoutes(router)
   return (
     <>
       <div>
-        {outlet}
+        <Link to="/home">home</Link>
+        <Link to="/login">login</Link>
+        <React.Suspense fallback={<div>loading...</div>}>
+          {outlet}
+        </React.Suspense>
       </div>
 
     </>

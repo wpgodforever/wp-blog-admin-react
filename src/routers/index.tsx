@@ -1,12 +1,14 @@
-import Home from '../views/Home'
-import Login from '../views/Login'
+import { lazy } from 'react'
+// 懒加载引入
+const Home = lazy(() => import('../views/Home'))
+const Login = lazy(() => import('../views/Login'))
 
 import { Navigate } from 'react-router-dom'
 
 const routes = [
     {
         path: '/',
-        element: <Navigate to='/home' />,
+        element: <Navigate to='/login' />,
     },
     {
         path: '/login',
