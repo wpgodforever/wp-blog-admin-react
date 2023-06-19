@@ -6,9 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <React.Suspense fallback={<div>loading...</div>}>
-          {outlet}
-        </React.Suspense>
+        {outlet}
       </div>
 
     </>

@@ -1,11 +1,20 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 // 懒加载引入
 import Layout from '../views/Layout'
-const Home = lazy(() => import('../views/Home'))
+import Home from '../views/Home'
 const Login = lazy(() => import('../views/Login'))
 const Tag = lazy(() => import('../views/Tag'))
 const Blog = lazy(() => import('../views/Blog'))
 const Test = lazy(() => import('../views/Test'))
+
+// 懒加载高阶组件
+const lazyLoading = (props: any) => {
+    return (
+        <Suspense fallback={<>loading...</>}>
+            {props}
+        </Suspense>
+    )
+}
 
 import { Navigate } from 'react-router-dom'
 
@@ -21,15 +30,15 @@ const routes = [
             },
             {
                 path: '/blogList',
-                element: <Blog />,
+                element: lazyLoading(<Blog />),
             },
             {
                 path: '/tagList',
-                element: <Tag />,
+                element: lazyLoading(<Tag />),
             },
             {
                 path: '/blogList1',
-                element: <Test />,
+                element: lazyLoading(<Test />),
             },
         ]
     },
