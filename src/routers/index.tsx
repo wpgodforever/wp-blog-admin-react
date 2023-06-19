@@ -28,7 +28,10 @@ const routes = [
             },
         ]
     },
-    
+    {
+        path: '*',
+        element: <Navigate to='/home/blogList' />,
+    }
 ]
 
 export default routes
