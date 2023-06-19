@@ -1,9 +1,9 @@
-const home = () => {
-    return (
-        <div>
-            <h1>home</h1>
-        </div>
-    );
-}
+import React from 'react';
 
-export default home;
+const Home: React.FC = () => {
+    return (
+        <div>空白展示</div>
+    );
+};
+
+export default Home;

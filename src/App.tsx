@@ -6,8 +6,6 @@ function App() {
   return (
     <>
       <div>
-        <Link to="/home">home</Link>
-        <Link to="/login">login</Link>
         <React.Suspense fallback={<div>loading...</div>}>
           {outlet}
         </React.Suspense>
