@@ -1,13 +1,13 @@
 // sass中的css变量用$
 $color: rgba(24, 29, 50);
 
-body{
-    background-color: $color;
+body {
+    // background-color: $color;
     // 禁止文字选中
     -webkit-user-select: none;
 }
 
-img{
+img {
     width: 100%;
     height: 100%;
     //禁止拖动
