@@ -23,22 +23,14 @@ export const getSliderPath = (sliderConfig: any, pathArr: any) => {
     let path = ''
     let pathNameArr:Array<string> = []
     let children:any = []
-
     pathArr.forEach((item:string) => {
-        const sliderConfigItem = children.length == 0 ? sliderConfig.find((_:any) => _.key == item) : children.find((_:any) => _.key == item)
-        if (!children.length) {
-            path += sliderConfigItem.path
+        const sliderConfigItem = children.length == 0 ? sliderConfig.find((_:any) => _.path == item) : children.find((_:any) => _.path == item)
+        path += sliderConfigItem.path
+        pathNameArr.push(sliderConfigItem.label)
+        if (!children.length || (children.length && sliderConfigItem.children)) {
             children = sliderConfigItem.children
-            pathNameArr.push(sliderConfigItem.label)
         }
-        else if (children.length && sliderConfigItem.children) {
-            path += sliderConfigItem.path
-            children = sliderConfigItem.children
-            pathNameArr.push(sliderConfigItem.label)
-        } else {
-            path += sliderConfigItem.path
-            pathNameArr.push(sliderConfigItem.label)
-        }
+        
     })
 
     return {

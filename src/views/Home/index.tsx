@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     } = theme.useToken();
 
     
-    let { pathNameArr } = getSliderPath(sliderConfig, [1, 11])
+    let { pathNameArr } = getSliderPath(sliderConfig, ['/home','/blogList'])
     const [usePathNameArr, setPathNameArr] = useState(pathNameArr)
     return (
         <Layout style={{ minHeight: '100vh' }}>
