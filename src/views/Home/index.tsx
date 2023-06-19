@@ -1,5 +1,5 @@
 import React from 'react';
-import {sliderConfig, getSliderPath} from '@/components/MainMenu/sliderConfig';
+import {sliderConfig, getSliderPath, getLocationArr} from '@/components/MainMenu/sliderConfig';
 import { Breadcrumb, Layout, theme } from 'antd';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -13,7 +13,8 @@ const Home: React.FC = () => {
     } = theme.useToken();
 
     
-    let { pathNameArr } = getSliderPath(sliderConfig, ['/home','/blogList'])
+    let { pathNameArr } = getSliderPath(sliderConfig, getLocationArr())
+    console.log(pathNameArr)
     const [usePathNameArr, setPathNameArr] = useState(pathNameArr)
     return (
         <Layout style={{ minHeight: '100vh' }}>

@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 export const sliderConfig = [
     {
         key: 1,
@@ -37,4 +38,11 @@ export const getSliderPath = (sliderConfig: any, pathArr: any) => {
         path,
         pathNameArr
     }
+}
+
+// 刷新页面时，侧边栏选中刷新的状态
+export const getLocationArr = () => {
+    const location = useLocation();
+    const pathArr = location.pathname.split('/').filter(item => item).map(item => '/' + item)
+    return pathArr
 }
