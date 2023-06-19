@@ -5,11 +5,6 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
 const { Header, Content, Sider } = Layout;
 
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
@@ -39,7 +34,6 @@ const Home: React.FC = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center' }}>
         <div className="demo-logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
       </Header>
       <Layout>
         <Sider width={200} style={{ background: colorBgContainer }}>
