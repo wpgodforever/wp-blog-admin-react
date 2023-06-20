@@ -13,3 +13,19 @@ img {
     //禁止拖动
     -webkit-user-drag: none;
 }
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: $color;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexCenter{
+    display: flex;
+    align-items: center;
+}

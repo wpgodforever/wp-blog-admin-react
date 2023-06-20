@@ -1,0 +1,13 @@
+.loginContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loginBox{
+        height: 120px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+}
