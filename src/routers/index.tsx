@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react'
 // 懒加载引入
 import Layout from '../views/Layout'
 import Home from '../views/Home'
-const Login = lazy(() => import('../views/Login'))
+import Login from '../views/Login'
 const Tag = lazy(() => import('../views/Tag'))
 const Blog = lazy(() => import('../views/Blog'))
 const Test = lazy(() => import('../views/Test'))
