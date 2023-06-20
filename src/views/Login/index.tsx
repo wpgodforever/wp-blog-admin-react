@@ -14,9 +14,10 @@ const login = () => {
     }
 
     // 获取store数据
-    const counter = useSelector((state: any) => ({
-        counter:state.counter
+    const num = useSelector((state: any) => ({
+        num:state.loginReducer.num
     }))
+    console.log(num)
     return (
         <div className={'container' + ' ' + style.loginContainer}>
             <div className={style.loginBox + ' ' + 'flexCol'}>
