@@ -36,7 +36,7 @@ const routes = [
                 element: lazyLoading(<Tag />),
             },
             {
-                path: '/blogList1',
+                path: '/test',
                 element: lazyLoading(<Test />),
             },
         ]
