@@ -2,13 +2,13 @@ import loginState from "./index";
 
 let reducer = (state = loginState.state, action:{type:string,val:number}) => {
     let newState = JSON.parse(JSON.stringify(state));
-    switch (action.type) {
-        case loginState.increment:
-            loginState.actions.increment(newState, action);
-            break;
-        default:
-            break;
+
+    for(let key in loginState.actions){
+        if(key === action.type){
+            loginState.actions[key as keyof typeof loginState.actions](newState, action);
+        }
     }
+
     return newState;
 }
 

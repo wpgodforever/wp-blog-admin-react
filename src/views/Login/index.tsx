@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './style.module.scss';
 import { UserOutlined, PropertySafetyOutlined } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
 //引入store数据用useSelector
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const login = () => {
     const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -14,10 +14,20 @@ const login = () => {
     }
 
     // 获取store数据
-    const num = useSelector((state: any) => ({
-        num:state.loginReducer.num
-    }))
-    console.log(num)
+    // const num = useSelector((state: any) => ({
+    //     num:state.loginReducer.num
+    // }))
+    // const dispatch = useDispatch()
+    // const changeNum = () => {
+    //     dispatch({
+    //         type: 'increment',
+    //         val: 100
+    //     })
+    // }
+    // useEffect(() => {
+    //     changeNum()
+    //     console.log(num)
+    // }, [])
     return (
         <div className={'container' + ' ' + style.loginContainer}>
             <div className={style.loginBox + ' ' + 'flexCol'}>
