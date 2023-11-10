@@ -1,14 +1,12 @@
-import React from 'react'
-import { useRoutes, Link } from 'react-router-dom'
+import { Suspense } from 'react'
 import router from './routers'
+import { Guard } from './routers/guard.ts'
 function App() {
-  const outlet = useRoutes(router)
   return (
     <>
-      <div>
-        {outlet}
-      </div>
-
+      <Suspense fallback={<>loading...</>}>
+        <Guard router={router} />
+      </Suspense>
     </>
   )
 }
