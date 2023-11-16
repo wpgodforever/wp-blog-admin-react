@@ -1,12 +1,16 @@
-import loginState from "./index";
+import * as TYPES from '../action-types.ts';
 
-let reducer = (state = loginState.state, action:{type:string,val:number}) => {
+const initState = {
+    token: '',
+}
+
+let reducer = (state = initState, action:{type:string,val:number}) => {
     let newState = JSON.parse(JSON.stringify(state));
 
-    for(let key in loginState.actions){
-        if(key === action.type){
-            loginState.actions[key as keyof typeof loginState.actions](newState, action);
-        }
+    switch (action.type) {
+        case TYPES.LOGIN_TEST:
+            newState.token = action.val;
+            break
     }
 
     return newState;
