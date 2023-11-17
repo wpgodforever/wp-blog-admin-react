@@ -2,15 +2,19 @@ import React, { useEffect } from 'react';
 import style from './style.module.scss';
 import { UserOutlined, PropertySafetyOutlined } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
+import actions from '@/store/actions.ts'
 //引入store数据用useSelector
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 
-const login = () => {
+const login = (props) => {
+    console.log(props, 'props')
+    const { login } = props
+
     const [passwordVisible, setPasswordVisible] = React.useState(false);
     const [password, setPassword] = React.useState('');
     const [username, setUsername] = React.useState('');
     const submit = () => {
-        console.log(username,password)
+        login(1)
     }
 
     // 获取store数据
@@ -51,4 +55,7 @@ const login = () => {
     );
 }
 
-export default login;
+export default connect(
+    (state) => state.loginReducer,
+    actions.loginAction
+)(login);
