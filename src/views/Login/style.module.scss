@@ -3,11 +3,16 @@
     align-items: center;
     justify-content: center;
     .loginBox{
-        height: 160px;
         align-items: center;
         justify-content: space-between;
         padding: 20px;
         background-color: #fff;
         border-radius: 10px;
+    }
+    .loginTitle{
+        margin-bottom: 20px;
+    }
+    :global(.ant-form-item) {
+        margin-bottom: 20px;
     }
 }
