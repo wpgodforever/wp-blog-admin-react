@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-// import { ElMessageBox, ElMessage  } from 'element-plus'
+import { message } from 'antd';
 // import router from '@/router/index'
 import baseUrl from '@/assets/js/baseUrl'
 import { concatPramas } from '@/lib/utils'
@@ -23,6 +23,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
+    console.log(localStorage.getItem('my_user'),'---------')
     // let user = JSON.parse(localStorage.getItem('my_user'))
     // if(user){
     //   config.headers.Authorization = 'Bearer ' + user.userInfo.token
@@ -77,7 +78,7 @@ service.interceptors.response.use(
     // }
     if (!res.msg) return res
     if (res.code !== 200) {
-      // ElMessage.error(res.msg)
+      message.error(res.msg)
       return Promise.reject(res.msg)
     }
     return res

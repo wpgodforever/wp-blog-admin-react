@@ -6,15 +6,25 @@ import actions from '@/store/actions.ts'
 //引入store数据用useSelector
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loginFn } from '@/api/login'
 
 const login = (props) => {
     const [form] = Form.useForm();
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const login = () => {
-        dispatch(actions.loginAction.login({ username: username, password: password })).then((res) => {
-            navigate('/')
+        loginFn({ username: username, password: password }).then(res => {
+            if (res.code === 200) {
+                dispatch(actions.loginAction.login(res.data.token))
+                return res
+            }
+
         })
+            .then((res) => {
+                if (res.code === 200) {
+                    navigate('/')
+                }
+            })
     }
     const [password, setPassword] = React.useState('');
     const [username, setUsername] = React.useState('');
