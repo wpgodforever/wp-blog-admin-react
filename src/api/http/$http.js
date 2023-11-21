@@ -60,8 +60,7 @@ service.interceptors.response.use(
     const res = response.data
     if (response.config.returnRes) return res
     // 接口状态码为401，说明登录已过期
-    if (+res.code ===200) {
-    // if (+res.code === 401 || +res.code === -1) {
+    if (+res.code === 401 || +res.code === -1) {
       if (!isAlert) {
         isAlert = true
         message.error('登录过期')
