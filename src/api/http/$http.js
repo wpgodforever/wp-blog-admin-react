@@ -67,7 +67,7 @@ service.interceptors.response.use(
         message.error('登录过期')
         store.dispatch(actions.loginAction.logout())
         // react重定向到登录页
-        window.location.href = '#/'
+        window.location.href = '#/login'
       }
       return Promise.reject('登录过期')
     }
