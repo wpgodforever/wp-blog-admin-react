@@ -22,5 +22,10 @@ export default {
                 resolve(true)
             })
         }
+    },
+    logout(){
+        return {
+            type:'LOGOUT'
+        }
     }
 }

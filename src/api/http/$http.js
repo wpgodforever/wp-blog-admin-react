@@ -1,11 +1,12 @@
 import axios from 'axios'
 import qs from 'qs'
-import { message } from 'antd';
+import { message, } from 'antd';
 // import router from '@/router/index'
 import baseUrl from '@/assets/js/baseUrl'
 import { concatPramas } from '@/lib/utils'
+import { store } from '@/store/index'
+import actions from '@/store/actions.ts'
 let isAlert = false
-
 // 允许操作cookie
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 axios.defaults.withCredentials = true
@@ -24,10 +25,10 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     console.log(localStorage.getItem('my_user'),'---------')
-    // let user = JSON.parse(localStorage.getItem('my_user'))
-    // if(user){
-    //   config.headers.Authorization = 'Bearer ' + user.userInfo.token
-    // }
+    let token = store.getState().loginReducer.token
+    if(token){
+      config.headers.Authorization = 'Bearer ' + token
+    }
     
     // post 请求需要序列化一下
     if (
@@ -59,23 +60,17 @@ service.interceptors.response.use(
     const res = response.data
     if (response.config.returnRes) return res
     // 接口状态码为401，说明登录已过期
+    if (+res.code ===200) {
     // if (+res.code === 401 || +res.code === -1) {
-    //   if (!isAlert) {
-    //     isAlert = true
-    //     const isUniversalLink = sessionStorage.getItem('isUniversalLink')
-    //     ElMessageBox.alert('登录过期', '提示', {
-    //       confirmButtonText: '确定',
-    //       callback: () => {
-    //         isAlert = false
-    //         localStorage.removeItem('my_user')
-    //         user.logout()
-    //         // 清除用户信息缓存，刷新当前页面
-    //         router.push('/')
-    //       },
-    //     })
-    //   }
-    //   return Promise.reject('登录过期')
-    // }
+      if (!isAlert) {
+        isAlert = true
+        message.error('登录过期')
+        store.dispatch(actions.loginAction.logout())
+        // react重定向到登录页
+        window.location.href = '#/'
+      }
+      return Promise.reject('登录过期')
+    }
     if (!res.msg) return res
     if (res.code !== 200) {
       message.error(res.msg)
