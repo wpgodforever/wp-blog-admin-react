@@ -1,3 +1,5 @@
+import { loginFn } from '@/api/login'
+
 interface loginVal {
     username:string,
     password:string
@@ -10,11 +12,14 @@ export default {
     //         val
     //     }
     // },
-    login(val:loginVal){
-        return async(dispath) => {
-            dispath({
-                type:'LOGIN',
-                val
+    login(val:loginVal,resolve:Function){
+        return async(dispath:Function) => {
+            loginFn(val).then(res => {
+                dispath({
+                    type:'LOGIN',
+                    val: res.data.token
+                })
+                resolve(true)
             })
         }
     }

@@ -4,27 +4,21 @@ import { UserOutlined, PropertySafetyOutlined } from '@ant-design/icons';
 import { Button, Input, Form } from 'antd';
 import actions from '@/store/actions.ts'
 //引入store数据用useSelector
-import { useSelector, useDispatch, connect } from 'react-redux';
+import { useSelector, useDispatch, } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginFn } from '@/api/login'
 
-const login = (props) => {
+const login = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const login = () => {
-        loginFn({ username: username, password: password }).then(res => {
-            if (res.code === 200) {
-                dispatch(actions.loginAction.login(res.data.token))
-                return res
+        dispatch(actions.loginAction.login({ username: username, password: password }, (isSuccess: boolean) => {
+            if (isSuccess) {
+                navigate('/')
             }
-
         })
-            .then((res) => {
-                if (res.code === 200) {
-                    navigate('/')
-                }
-            })
+
+        )
     }
     const [password, setPassword] = React.useState('');
     const [username, setUsername] = React.useState('');
