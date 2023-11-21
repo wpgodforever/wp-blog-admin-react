@@ -31,24 +31,8 @@ const login = () => {
 
     }
 
-    // 获取store数据
-    // const num = useSelector((state: any) => ({
-    //     num:state.loginReducer.num
-    // }))
-    // const dispatch = useDispatch()
-    // const changeNum = () => {
-    //     dispatch({
-    //         type: 'increment',
-    //         val: 100
-    //     })
-    // }
-    // useEffect(() => {
-    //     changeNum()
-    //     console.log(num)
-    // }, [])
     const validateMessages = {
         required: "'${name}' 是必填字段",
-        // ...
     };
     return (
         <div className={'container' + ' ' + style.loginContainer}>
