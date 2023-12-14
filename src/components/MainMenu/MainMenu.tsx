@@ -10,12 +10,12 @@ const menuItems: MenuProps['items'] = sliderConfig.map(
             key: `${icon.path}`,
             label: `${icon.label}`,
 
-            children: icon.children.map((_, j) => {
+            children: icon.children?icon.children?.map((_, j) => {
                 return {
                     key: _.path,
                     label: `${_.label}`,
                 };
-            }),
+            }):null,
         };
     },
 );
@@ -28,12 +28,11 @@ const MainMenu: React.FC = (props: any) => {
     const SliderClick = (e: any) => {
         navigateTo(e.key)
         const pathNameArr = getLabelArr(sliderConfig, location.pathname)
-        console.log(props)
         props.pathMethod(pathNameArr)
     }
     const location = useLocation();
     const pathArr = getLocationArr(sliderConfig, location.pathname)
-
+    console.log(location, 'location')
     return (
         <Menu
             mode="inline"

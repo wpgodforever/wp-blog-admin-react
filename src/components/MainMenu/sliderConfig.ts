@@ -1,5 +1,10 @@
 export const sliderConfig = [
     {
+        key: 0,
+        label: '首页',
+        path: '/',
+    },
+    {
         key: 1,
         label: '博客管理',
         path: '/blog',
@@ -36,7 +41,8 @@ export const getLocationArr = ((arr: any, pathname: string) => {
     const pathArr = [];
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i];
-        if (item.children) {
+        
+        if (item.children && item.children.length) {
             const childrenArr: any = getLocationArr(item.children, pathname)
             if (childrenArr.length) {
                 pathArr.push(item.path)
@@ -46,6 +52,7 @@ export const getLocationArr = ((arr: any, pathname: string) => {
             }
         }
         else if (item.path === location) {
+            
             pathArr.push(item.path)
             break;
         }
