@@ -30,14 +30,25 @@ const routes = [
             {
                 path: '/blogList',
                 element: lazyLoading(<Blog />),
+                meta:{
+                    title: '博客列表',
+                    role:['admin']
+                }
             },
             {
                 path: '/tagList',
                 element: lazyLoading(<Tag />),
+                meta:{
+                    title: '标签列表'
+                }
             },
             {
                 path: '/test',
                 element: lazyLoading(<Test />),
+                meta:{
+                    title: '测试',
+                    role:['tester']
+                }
             },
         ]
     },
@@ -50,5 +61,7 @@ const routes = [
         element: <Navigate to='/login' />,
     }
 ]
+
+
 
 export default routes
