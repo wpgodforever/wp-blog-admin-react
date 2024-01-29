@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 const Auth = (props) => {
     let role = 'admin'
     if (props.meta.role) {
+        console.log(props.meta.role)
         if (!role.includes(props.meta.role)) {
             return (
                 <div>没有权限</div>
@@ -21,6 +22,15 @@ const authLoad = (element, meta = {}) => {
         <Suspense>
             <Auth meta={meta}>
                 <Component></Component>
+            </Auth>
+        </Suspense>
+    );
+};
+const defaultAuthLoad = (Component, meta = {}) => {
+    return (
+        <Suspense fallback={<>loading...</>}>
+            <Auth meta={meta}>
+                {Component}
             </Auth>
         </Suspense>
     );
@@ -55,5 +65,6 @@ const transformRoutes = (routes) => {
 export {
     Auth,
     authLoad,
-    transformRoutes
+    transformRoutes,
+    defaultAuthLoad
 }

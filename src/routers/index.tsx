@@ -7,6 +7,8 @@ const Blog = lazy(() => import('../views/Blog'))
 const Tag = lazy(() => import('../views/Tag'))
 const Test = lazy(() => import('../views/Test'))
 
+import { defaultAuthLoad } from './auth'
+
 // 懒加载高阶组件
 const lazyLoading = (props: any) => {
     return (
@@ -23,30 +25,29 @@ const routes = [
         children: [
             {
                 index: true,
-                element: lazyLoading(<Home />),
+                element: defaultAuthLoad(<Home />),
             },
             {
                 path: '/blogList',
-                element: lazyLoading(<Blog />),
-                meta:{
+                element: defaultAuthLoad(<Blog />, {
                     title: '博客列表',
-                    role:['admin']
-                }
+                    role: ['admin']
+
+                }),
             },
             {
                 path: '/tagList',
-                element: lazyLoading(<Tag />),
-                meta:{
-                    title: '标签列表'
-                }
+                element: defaultAuthLoad(<Tag />, {
+                    title: '标签列表',
+                    role: ['tester']
+                }),
             },
             {
                 path: '/test',
-                element: lazyLoading(<Test />),
-                meta:{
+                element: defaultAuthLoad(<Test />, {
                     title: '测试',
-                    role:['tester']
-                }
+                    role: ['tester']
+                }),
             },
         ]
     },
@@ -56,7 +57,7 @@ const routes = [
     },
     {
         path: '*',
-        element: <Navigate to="/" replace/>,
+        element: <Navigate to="/" replace />,
     }
 ]
 
