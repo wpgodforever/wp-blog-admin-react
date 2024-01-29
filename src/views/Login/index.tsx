@@ -14,6 +14,7 @@ const login = () => {
     const login = () => {
         dispatch(actions.loginAction.login({ username: username, password: password }, (isSuccess: boolean) => {
             if (isSuccess) {
+                dispatch(actions.loginAction.asyncRouter())
                 navigate('/')
             }
         })

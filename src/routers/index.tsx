@@ -1,10 +1,10 @@
+import { Navigate } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
-// 懒加载引入
 import Layout from '../views/Layout'
 import Home from '../views/Home'
 import Login from '../views/Login'
-const Tag = lazy(() => import('../views/Tag'))
 const Blog = lazy(() => import('../views/Blog'))
+const Tag = lazy(() => import('../views/Tag'))
 const Test = lazy(() => import('../views/Test'))
 
 // 懒加载高阶组件
@@ -16,8 +16,6 @@ const lazyLoading = (props: any) => {
     )
 }
 
-import { Navigate } from 'react-router-dom'
-
 const routes = [
     {
         path: '/',
@@ -25,7 +23,7 @@ const routes = [
         children: [
             {
                 index: true,
-                element: <Home />,
+                element: lazyLoading(<Home />),
             },
             {
                 path: '/blogList',
@@ -58,7 +56,7 @@ const routes = [
     },
     {
         path: '*',
-        element: <Navigate to='/login' />,
+        element: <Navigate to="/" replace/>,
     }
 ]
 

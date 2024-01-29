@@ -27,5 +27,26 @@ export default {
         return {
             type:'LOGOUT'
         }
-    }
+    },
+    asyncRouter(){
+        return async(dispath:Function) => {
+            setTimeout(() =>{
+                dispath({
+                    type:'ADDROUTER',
+                    val: [
+                        {
+                            path: '/test',
+                            element: '../views/Layout/index.tsx',
+                            children: [
+                                {
+                                    path: '/test/test1',
+                                    element: '../views/test1/index.tsx',
+                                },
+                            ]
+                        },
+                    ]
+                })
+            },1000)
+        }
+    },
 }
