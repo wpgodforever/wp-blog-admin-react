@@ -12,12 +12,17 @@ export const sliderConfig = [
             {
                 key: 11,
                 label: '文章管理',
-                path: '/blogList'
+                path: '/blog/blogList'
             },
             {
                 key: 12,
                 label: '标签管理',
-                path: '/tagList'
+                path: '/blog/tagList'
+            },
+            {
+                key: 13,
+                label: '错误边界',
+                path: '/blog/test1'
             },
         ]
     },
@@ -28,11 +33,23 @@ export const sliderConfig = [
         children: [
             {
                 key: 13,
-                label: '文章管理1',
-                path: '/blogList1'
+                label: '测试1',
+                path: '/test/blogList1'
             },
         ]
     },
+    {
+        key: 3,
+        label: '案例管理',
+        path: '/case',
+        children: [
+            {
+                key: 31,
+                label: 'hooks useRef',
+                path: '/case/useRef'
+            },
+        ]
+    }
 ]
 
 // 刷新页面时，侧边栏选中刷新的状态
@@ -41,7 +58,7 @@ export const getLocationArr = ((arr: any, pathname: string) => {
     const pathArr = [];
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i];
-        
+
         if (item.children && item.children.length) {
             const childrenArr: any = getLocationArr(item.children, pathname)
             if (childrenArr.length) {
@@ -52,7 +69,7 @@ export const getLocationArr = ((arr: any, pathname: string) => {
             }
         }
         else if (item.path === location) {
-            
+
             pathArr.push(item.path)
             break;
         }

@@ -29,6 +29,7 @@ const MainMenu: React.FC = (props: any) => {
     const pathArr = getLocationArr(sliderConfig, location.pathname)
     
     const SliderClick = (e: any) => {
+        console.log(e.key)
         navigateTo(e.key)
         const pathNameArr = getLabelArr(sliderConfig, e.key)
         props.pathMethod(pathNameArr)

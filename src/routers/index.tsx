@@ -6,6 +6,8 @@ import Login from '../views/Login'
 const Blog = lazy(() => import('../views/Blog'))
 const Tag = lazy(() => import('../views/Tag'))
 const Test = lazy(() => import('../views/Test'))
+const Test1 = lazy(() => import('../views/Test/test1.tsx'))
+const UseRef = lazy(() => import('../views/Case/useRef.tsx'))
 
 import { defaultAuthLoad } from './auth'
 
@@ -27,28 +29,59 @@ const routes = [
                 index: true,
                 element: defaultAuthLoad(<Home />),
             },
+        ]
+    },
+    {
+        path: '/blog',
+        element: <Layout />,
+        children: [
             {
-                path: '/blogList',
-                element: defaultAuthLoad(<Blog />, {
+                path: '/blog/blogList',
+                element: defaultAuthLoad(lazyLoading(<Blog />), {
                     title: '博客列表',
                     role: ['admin']
-
                 }),
             },
             {
-                path: '/tagList',
-                element: defaultAuthLoad(<Tag />, {
+                path: '/blog/tagList',
+                element: defaultAuthLoad(lazyLoading(<Tag />), {
                     title: '标签列表',
                     role: ['tester']
                 }),
             },
             {
-                path: '/test',
+                path: '/blog/test1',
+                element: defaultAuthLoad(<Test1 />, {
+                    title: '错误边界',
+                    role: ['admin']
+                }),
+            },
+        ]
+    },
+    {
+        path: '/test',
+        element: <Layout />,
+        children: [
+            {
+                path: '/test/test1',
                 element: defaultAuthLoad(<Test />, {
                     title: '测试',
                     role: ['tester']
                 }),
             },
+        ]
+    },
+    {
+        path: '/case',
+        element: <Layout />,
+        children: [
+            {
+                path: '/case/useRef',
+                element: defaultAuthLoad(lazyLoading(<UseRef />), {
+                    title: 'hooks useRef',
+                    role: ['admin']
+                }),
+            }
         ]
     },
     {
