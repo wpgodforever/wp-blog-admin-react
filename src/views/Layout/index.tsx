@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb, Layout, theme } from 'antd';
-import {sliderConfig, getLocationArr, getLabelArr} from '@/components/MainMenu/sliderConfig';
+import { sliderConfig, getLocationArr, getLabelArr } from '@/components/MainMenu/sliderConfig';
 import MainMenu from '@/components/MainMenu/MainMenu';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -16,27 +16,31 @@ const LayOut: React.FC = () => {
   const [usePathNameArr, setPathNameArr] = useState(pathNameArr)
   const pathMethod = (pathNameArr: string[]) => {
     setPathNameArr(pathNameArr)
-    }
+  }
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center' }}>
       </Header>
       <Layout>
         <Sider width={200} style={{ background: colorBgContainer }}>
-          <MainMenu pathMethod={pathMethod}/>
+          <MainMenu pathMethod={pathMethod} />
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }} 
-            items={
+          {
+            usePathNameArr.length > 0 ? 
+            (<Breadcrumb style={{ margin: '16px 0' }}
+              items={
                 usePathNameArr.map((item, index) => {
-                    return {
-                        title: item
-                    }
+                  return {
+                    title: item
+                  }
                 })
-            }
-          >
-            
-          </Breadcrumb>
+              }
+            >
+
+            </Breadcrumb>) : null
+          }
+
           <Content
             style={{
               padding: 24,
