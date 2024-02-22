@@ -48,6 +48,11 @@ export const sliderConfig = [
                 label: 'hooks useRef',
                 path: '/case/useRef'
             },
+            {
+                key: 32,
+                label: 'hooks useEffect',
+                path: '/case/useEffect'
+            },
         ]
     }
 ]
