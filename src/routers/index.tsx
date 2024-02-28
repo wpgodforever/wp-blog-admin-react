@@ -23,6 +23,7 @@ const lazyLoading = (props: any) => {
     )
 }
 
+//如果是需要权限控制的页面，就在defaultAuthLoad第二个参数中传入带有role属性的对象，没有就默认不需要权限控制
 const routes = [
     {
         path: '/',

@@ -39,8 +39,12 @@ export default {
                             element: '../views/Layout/index.tsx',
                             children: [
                                 {
-                                    path: '/test/test1',
+                                    path: '/test/roleTest',
                                     element: '../views/test1/index.tsx',
+                                    meta: {
+                                        title: '测试',
+                                        role: ['test']
+                                    }
                                 },
                             ]
                         },
