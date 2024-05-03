@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react"
+import { ElementType, Suspense, lazy } from "react"
 import { Navigate } from 'react-router-dom'
 
 const Auth = (props) => {
@@ -16,8 +16,8 @@ const Auth = (props) => {
     )
 }
 
-const authLoad = (element, meta = {}) => {
-    const Component = lazy(() => import(element));
+const authLoad = (element: any, meta = {}) => {
+    const Component = lazy(() => import(/* @vite-ignore */element));
     return (
         <Suspense>
             <Auth meta={meta}>
