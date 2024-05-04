@@ -63,6 +63,11 @@ export const sliderConfig = [
                 label: '无权限展示',
                 path: '/case/right'
             },
+            {
+                key: 35,
+                label: 'hooks useState',
+                path: '/case/useState'
+            },
         ]
     }
 ]

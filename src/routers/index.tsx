@@ -11,6 +11,7 @@ const UseRef = lazy(() => import('../views/Case/useRef.tsx'))
 const UseEffect = lazy(() => import('../views/Case/useEffect.tsx'))
 const UseContext = lazy(() => import('../views/Case/useContext.tsx'))
 const Right = lazy(() => import('../views/Case/right.tsx'))
+const UseState = lazy(() => import('../views/Case/useState.tsx'))
 
 import { defaultAuthLoad } from './auth'
 
@@ -104,6 +105,13 @@ const routes = [
                 element: defaultAuthLoad(lazyLoading(<Right />), {
                     title: '无权限展示',
                     role: ['tester']
+                }),
+            },
+            {
+                path: '/case/useState',
+                element: defaultAuthLoad(lazyLoading(<UseState />), {
+                    title: 'useState的使用',
+                    role: ['admin']
                 }),
             },
 
