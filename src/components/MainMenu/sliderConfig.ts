@@ -68,6 +68,11 @@ export const sliderConfig = [
                 label: 'hooks useState',
                 path: '/case/useState'
             },
+            {
+                key: 36,
+                label: '自定义hooks',
+                path: '/case/customHooks'
+            },
         ]
     }
 ]

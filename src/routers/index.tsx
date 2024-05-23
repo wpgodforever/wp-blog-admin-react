@@ -12,6 +12,7 @@ const UseEffect = lazy(() => import('../views/Case/useEffect.tsx'))
 const UseContext = lazy(() => import('../views/Case/useContext.tsx'))
 const Right = lazy(() => import('../views/Case/right.tsx'))
 const UseState = lazy(() => import('../views/Case/useState.tsx'))
+const CustomHooks = lazy(() => import('../views/Case/customHooks.tsx'))
 
 import { defaultAuthLoad } from './auth'
 
@@ -24,6 +25,7 @@ const lazyLoading = (props: any) => {
     )
 }
 
+//如果是需要权限控制的页面，就在defaultAuthLoad第二个参数中传入带有role属性的对象，没有就默认不需要权限控制
 const routes = [
     {
         path: '/',
@@ -111,6 +113,12 @@ const routes = [
                 path: '/case/useState',
                 element: defaultAuthLoad(lazyLoading(<UseState />), {
                     title: 'useState的使用',
+                }),
+            },
+            {
+                path: '/case/customHooks',
+                element: defaultAuthLoad(lazyLoading(<CustomHooks />), {
+                    title: '自定义hooks',
                     role: ['admin']
                 }),
             },
