@@ -24,6 +24,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "reset-css": "^5.0.1",
+    "rollup-plugin-copy": "^3.5.0",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
